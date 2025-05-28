@@ -1,0 +1,53 @@
+{
+  "name": "codesafe-ai",
+  "displayName": "CodeSafe AI",
+  "description": "GPT-4o extension that finds and fixes XSS/CSRF/SQLi in JS/TS/React",
+  "version": "0.0.1",
+  "publisher": "your-publisher-id",
+  "engines": {
+    "vscode": "^1.90.0"
+  },
+  "categories": [
+    "Linters",
+    "AI"
+  ],
+  "activationEvents": [
+    "onLanguage:javascript",
+    "onLanguage:typescript",
+    "onLanguage:javascriptreact",
+    "onLanguage:typescriptreact"
+  ],
+  "main": "./dist/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "codesafe-ai.scanFile",
+        "title": "CodeSafe AI: Scan Current File"
+      }
+    ],
+    "configuration": {
+      "title": "CodeSafe AI",
+      "properties": {
+        "codesafe-ai.apiKey": {
+          "type": "string",
+          "description": "OpenAI API key",
+          "default": ""
+        }
+      }
+    }
+  },
+  "scripts": {
+    "dev": "ts-node-dev --respawn src/extension.ts",
+    "compile": "tsc -p .",
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.100.0",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^5.8.3",
+    "@vscode/vsce": "^3.4.2"
+  },
+  "dependencies": {
+    "openai": "^4.103.0"
+  }
+}
